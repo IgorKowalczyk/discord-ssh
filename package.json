@@ -1,0 +1,40 @@
+{
+  "name": "discord-ssh",
+  "version": "0.0.1",
+  "description": "discord-ssh",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "format": "prettier --write . --ignore-unknown",
+    "format:check": "prettier --check .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "discord.js": "^13.5.1",
+    "dotenv": "^10.0.0",
+    "prettier": "^2.5.1",
+    "strip-ansi": "^6.0.0",
+    "systeminformation": "^5.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorKowalczyk/discord-ssh.git"
+  },
+  "keywords": [
+    "discord",
+    "node-js",
+    "discord",
+    "discord-ssh",
+    "ssh",
+    "remote-connection"
+  ],
+  "engines": {
+    "node": "16.x"
+  },
+  "author": "Igor Kowalczyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IgorKowalczyk/discord-ssh/issues"
+  },
+  "homepage": "https://github.com/IgorKowalczyk/discord-ssh#readme"
+}
