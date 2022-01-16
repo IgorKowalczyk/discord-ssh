@@ -50,7 +50,6 @@ async function exec(input, options, custom_cwd) {
  let output = "";
  let args = input.split(" ");
  let command = args.shift();
- //  let cmd = spawn(`echo ${client.config.sudo.password} | sudo -S -k ${command}`, args, {
  let cmd = spawn(`echo ${client.config.sudo.password} | sudo -S -k ${command}`, args, {
   shell: true,
   env: { COLUMNS: 128 },
