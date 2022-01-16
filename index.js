@@ -1,8 +1,10 @@
 const Discord = require("discord.js");
 const { spawn } = require("child_process");
 const strip = require("strip-ansi");
+const chalk = require("chalk")
 const si = require("systeminformation");
-
+const config = require("./config");
+console.log(chalk.cyan(chalk.bold(`[MAIN] > Starting SSH...`)))
 const client = new Discord.Client({
  allowedMentions: {
   parse: ["users", "roles"],
@@ -19,6 +21,9 @@ require("events").EventEmitter.prototype._maxListeners = 100;
 require("events").defaultMaxListeners = 100;
 require("./utilities/anti_crash")(client);
 require("./utilities/env_check")(client);
+if(config.ngrok.enabled) {
+ require("./utilities/ngrok")(client);
+}
 const sudo_text = `[sudo] password for ${client.config.sudo.user}: `;
 const fmt = {
  bold: "\x1b[1m",
@@ -57,15 +62,15 @@ async function exec(input, options, custom_cwd) {
  });
 
  cmd.stdout.on("data", (data) => {
-  process.stdout.write(data);
+  //process.stdout.write(data);
   output += data;
  });
  cmd.stderr.on("data", (data) => {
-  process.stderr.write(data);
+  //process.stderr.write(data);
   output += data;
  });
  cmd.on("exit", async () => {
-  process.stdout.write(`\n${fmt.bold}${fmt.green}>${fmt.reset} `);
+  //process.stdout.write(`\n${fmt.bold}${fmt.green}>${fmt.reset} `);
   if (output) {
    await client.config.channel.bulkDelete(1);
    const chunkStr = (str, n, acc) => {
@@ -135,7 +140,7 @@ client.on("ready", async () => {
  }
 
  if (!(await client.config.channel.fetchWebhooks()).size) await client.config.channel.createWebhook(client.config.owner.tag, { avatar: client.config.owner.displayAvatarURL({ format: "png" }) });
- process.stdout.write(`Logged in as ${client.user.tag}\n\n${fmt.bold}${fmt.green}>${fmt.reset} `);
+ console.log(chalk.cyan(chalk.bold(`[DISCORD] > Logged in as ${client.user.tag}`)))
 });
 
 process.stdin.on("data", (data) => exec(data.toString(), { terminal: true }));
