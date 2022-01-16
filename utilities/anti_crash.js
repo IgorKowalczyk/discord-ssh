@@ -1,2 +1,1 @@
-module.exports = function (client) {
-}
+module.exports = function (client) {};
