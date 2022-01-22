@@ -7,7 +7,6 @@
 [![Discord.js](https://img.shields.io/badge/Discord.js-v13-%2334d058?style=flat-square&color=333&logo=npm&logoColor=fff)](https://www.npmjs.com/package/discord.js)
 [![CodeQL Checks](https://img.shields.io/github/workflow/status/igorkowalczyk/discord-ssh/CodeQL%20Checks/master?style=flat-square&label=CodeQL&logo=github&color=333)](https://majoexe.ml/)
 [![GitHub License](https://img.shields.io/github/license/igorkowalczyk/discord-ssh?style=flat-square&logo=github&label=License&color=333)](https://majoexe.ml)
-[![Version](https://img.shields.io/github/package-json/v/igorkowalczyk/discord-ssh?style=flat-square&logo=github&label=Version&color=333)](https://majoexe.ml/server)
 <br>
 
 ---
