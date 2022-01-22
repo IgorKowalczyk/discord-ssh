@@ -8,5 +8,5 @@ module.exports = {
   region: "eu",
   token: process.env.NGROK_TOKEN,
   user: process.env.NGROK_USER,
- }
+ },
 };
