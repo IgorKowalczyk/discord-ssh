@@ -3,7 +3,6 @@ const { spawn } = require("child_process");
 const strip = require("strip-ansi");
 const chalk = require("chalk");
 const si = require("systeminformation");
-const config = require("./config");
 console.log(chalk.cyan(chalk.bold(`[MAIN] > Starting SSH...`)));
 const client = new Discord.Client({
  allowedMentions: {
@@ -21,9 +20,6 @@ require("events").EventEmitter.prototype._maxListeners = 100;
 require("events").defaultMaxListeners = 100;
 require("./utilities/anti_crash")(client);
 require("./utilities/env_check")(client);
-if (config.ngrok.enabled) {
- require("./utilities/ngrok")(client);
-}
 const sudo_text = `[sudo] password for ${client.config.sudo.user}: `;
 const fmt = {
  bold: "\x1b[1m",
