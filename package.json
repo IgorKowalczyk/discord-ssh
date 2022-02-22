@@ -1,6 +1,6 @@
 {
   "name": "discord-ssh",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Discord bot for using shell commands remotely through Discord",
   "main": "index.js",
   "scripts": {
@@ -11,9 +11,8 @@
   },
   "dependencies": {
     "chalk": "^4.1.2",
-    "discord.js": "^13.5.1",
+    "discord.js": "^13.6.0",
     "dotenv": "^10.0.0",
-    "ngrok": "^4.3.0",
     "prettier": "^2.5.1",
     "strip-ansi": "^6.0.0",
     "systeminformation": "^5.10.0"

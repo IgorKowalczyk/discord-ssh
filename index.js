@@ -26,7 +26,7 @@ const fmt = {
  green: "\x1b[32m",
  reset: "\x1b[0m",
 };
-// To eliminate "lag" on command
+// Cache stats to eliminate "lag" on command
 setInterval(() => {
  si.cpuTemperature().then((data) => {
   client.cpu_temperature = data.main;
@@ -117,28 +117,25 @@ client.on("ready", async () => {
  if (!client.config.channel) {
   throw new Error("Invalid CHANNEL_ID in .env!");
  }
-
  client.config.owner = await client.users.fetch(client.config.owner);
  if (!client.config.owner) {
   throw new Error("Invalid OWNER_ID in .env!");
  }
-
  if (!client.config.channel.guild.me.permissionsIn(client.config.channel).has("VIEW_CHANNEL")) {
   throw new Error("Missing required permission VIEW_CHANNEL for channel specified in .env");
  }
-
  if (!client.config.channel.guild.me.permissionsIn(client.config.channel).has("SEND_MESSAGES")) {
   throw new Error("Missing required permission SEND_MESSAGES for channel specified in .env");
  }
-
  if (!client.config.channel.guild.me.permissionsIn(client.config.channel).has("MANAGE_WEBHOOKS")) {
   throw new Error("Missing required permission MANAGE_WEBHOOKS for channel specified in .env");
  }
-
  if (!(await client.config.channel.fetchWebhooks()).size) await client.config.channel.createWebhook(client.config.owner.tag, { avatar: client.config.owner.displayAvatarURL({ format: "png" }) });
  console.log(chalk.cyan(chalk.bold(`[DISCORD] > Logged in as ${client.user.tag}`)));
+ client.user.setActivity("all ports!", {
+  type: "WATCHING",
+ });
 });
-
 process.stdin.on("data", (data) => exec(data.toString(), { terminal: true }));
 
 client.login(client.config.token).catch(() => {
