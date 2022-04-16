@@ -1,4 +1,4 @@
-<img width="170" height="170" align="left" style="float: left; margin: 0 10px 0 0; border-radius: 50%;" alt="Majo.exe Logo" src="https://media.discordapp.net/attachments/709486554862714995/933392971263533166/circle.png?width=643&height=643">  
+<img width="170" height="170" align="left" style="float: left; margin: 0 10px 0 0; border-radius: 50%;" alt="Discord.ssh" src="https://user-images.githubusercontent.com/49127376/163674017-dfb08eac-161b-4b1b-b963-0ff0f3cc483c.png">
 
 # Discord.ssh
 
@@ -11,7 +11,7 @@
 
 ---
 
-### `.env`
+## `.env` config
 ```
 CHANNEL_ID=CHANNEL_ID_TO_RUN_SSH_COMMANDS
 OWNER_ID=BOT_OWNER_ID
@@ -20,3 +20,19 @@ SUDO_USER=SUDO_USER
 SUDO_PASSWORD=SUDO_PASSWORD
 CUSTOM_CWD=DEFAULT_SSH_DIR_PATH
 ```
+
+## ⁉️ Issues
+
+If you have any issues with the page please create [new issue here](https://github.com/igorkowalczyk/discord-ssh/issues)
+
+## 📥 Pull Requests
+
+When submitting a pull request:
+
+- Clone the repo.
+- Create a branch off of master and give it a meaningful name (e.g. my-awesome-new-feature).
+- Open a [pull request](https://github.com/igorkowalczyk/discord-ssh/pulls) on [GitHub](https://github.com) and describe the feature or fix.
+
+## 📋 License
+
+This project is licensed under the MIT. See the [LICENSE](https://github.com/igorkowalczyk/discord-ssh/blob/master/license.md) file for details
