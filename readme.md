@@ -1,4 +1,4 @@
-<img width="170" height="170" align="left" style="float: left; margin: 0 10px 0 0; border-radius: 50%;" alt="Discord.ssh" src="https://user-images.githubusercontent.com/49127376/163674017-dfb08eac-161b-4b1b-b963-0ff0f3cc483c.png">
+<img width="170" height="170" align="left" style="float: left; margin: 0 10px 0 0; border-radius: 50%;" alt="Discord.ssh" src="https://user-images.githubusercontent.com/49127376/163674188-29adc0db-c46e-4683-ae07-dced8f4f890d.png">
 
 # Discord.ssh
 
@@ -11,7 +11,7 @@
 
 ---
 
-## `.env` config
+## 🔐 `.env` config
 ```
 CHANNEL_ID=CHANNEL_ID_TO_RUN_SSH_COMMANDS
 OWNER_ID=BOT_OWNER_ID
