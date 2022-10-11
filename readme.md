@@ -3,7 +3,7 @@
 # Discord.ssh
 
 > 🚀 Discord bot for using shell commands remotely through Discord
-> <br><br>[![Discord](https://img.shields.io/discord/666599184844980224?color=333&logo=discord&label=Discord&style=flat-square&logoColor=fff)](https://igorkowalczyk.dev/r/discord) > [![Discord.js](https://img.shields.io/badge/Discord.js-v13-%2334d058?style=flat-square&color=333&logo=npm&logoColor=fff)](https://www.npmjs.com/package/discord.js) > [![CodeQL Checks](https://img.shields.io/github/workflow/status/igorkowalczyk/discord-ssh/CodeQL%20Checks/master?style=flat-square&label=CodeQL&logo=github&color=333)](https://igorkowalczyk.dev/) > [![GitHub License](https://img.shields.io/github/license/igorkowalczyk/discord-ssh?style=flat-square&logo=github&label=License&color=333)](https://github.com/igorkowalczyk/discord-ssh) > <br>
+> <br><br>[![Discord](https://img.shields.io/discord/666599184844980224?color=333&logo=discord&label=Discord&style=flat-square&logoColor=fff)](https://igorkowalczyk.dev/r/discord) [![Discord.js](https://img.shields.io/badge/Discord.js-v13-%2334d058?style=flat-square&color=333&logo=npm&logoColor=fff)](https://www.npmjs.com/package/discord.js)  [![CodeQL Checks](https://img.shields.io/github/workflow/status/igorkowalczyk/discord-ssh/CodeQL%20Checks/master?style=flat-square&label=CodeQL&logo=github&color=333)](https://igorkowalczyk.dev/)  [![GitHub License](https://img.shields.io/github/license/igorkowalczyk/discord-ssh?style=flat-square&logo=github&label=License&color=333)](https://github.com/igorkowalczyk/discord-ssh)  <br>
 
 ---
 
