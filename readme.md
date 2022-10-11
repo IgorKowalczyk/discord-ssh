@@ -1,9 +1,11 @@
-<img width="170" height="170" align="left" style="float: left; margin: 0 10px 0 0; border-radius: 50%;" alt="Discord.ssh" src="https://user-images.githubusercontent.com/49127376/163674188-29adc0db-c46e-4683-ae07-dced8f4f890d.png">
+<img width="170" height="170" align="left" style="float: left; margin: 0 10px 0 0; border-radius: 50%;" alt="Discord.ssh" src="https://user-images.githubusercontent.com/49127376/195095767-f91cb8cf-5320-40b0-8832-aee18cbd7b7c.png">
 
 # Discord.ssh
 
+
+
 > 🚀 Discord bot for using shell commands remotely through Discord
-> <br><br>[![Discord](https://img.shields.io/discord/666599184844980224?color=333&logo=discord&label=Discord&style=flat-square&logoColor=fff)](https://igorkowalczyk.dev/r/discord) [![Discord.js](https://img.shields.io/badge/Discord.js-v13-%2334d058?style=flat-square&color=333&logo=npm&logoColor=fff)](https://www.npmjs.com/package/discord.js) [![CodeQL Checks](https://img.shields.io/github/workflow/status/igorkowalczyk/discord-ssh/CodeQL%20Checks/master?style=flat-square&label=CodeQL&logo=github&color=333)](https://igorkowalczyk.dev/) [![GitHub License](https://img.shields.io/github/license/igorkowalczyk/discord-ssh?style=flat-square&logo=github&label=License&color=333)](https://github.com/igorkowalczyk/discord-ssh) <br>
+> <br><br>[![Discord](https://img.shields.io/discord/666599184844980224?color=6005D2&logo=discord&label=Discord&style=flat-square&logoColor=fff)](https://igorkowalczyk.dev/r/discord) [![Discord.js](https://img.shields.io/badge/Discord.js-v13-%2334d058?style=flat-square&color=6005D2&logo=npm&logoColor=fff)](https://www.npmjs.com/package/discord.js) [![CodeQL Checks](https://img.shields.io/github/workflow/status/igorkowalczyk/discord-ssh/CodeQL%20Checks/master?style=flat-square&label=CodeQL&logo=github&color=6005D2)](https://igorkowalczyk.dev/) [![GitHub License](https://img.shields.io/github/license/igorkowalczyk/discord-ssh?style=flat-square&logo=github&label=License&color=6005D2)](https://github.com/igorkowalczyk/discord-ssh) <br>
 
 ---
 
