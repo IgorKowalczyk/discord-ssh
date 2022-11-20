@@ -1,4 +1,4 @@
-<img width="170" height="170" align="left" style="float: left; margin: 0 10px 0 0; border-radius: 50%;" alt="Discord.ssh" src="https://user-images.githubusercontent.com/49127376/195095767-f91cb8cf-5320-40b0-8832-aee18cbd7b7c.png">
+<img width="170" height="170" align="left" style="float: left; margin: 0 10px 0 0; border-radius: 50%;" alt="Discord.ssh" src="https://user-images.githubusercontent.com/49127376/202896528-83f39b85-d67c-4163-a613-80ea8ddad4ec.png">
 
 # Discord.ssh
 
