@@ -7,6 +7,27 @@
 
 ---
 
+## 💡 Why I made this?
+
+My ISP won't let me open some ports on my router so I can't use SSH to connect to my server.<br/>
+I created this bot to run shell commands on my server remotely through Discord.
+<br/>I can also use it to run commands on my local machine.
+
+> ~**Modern problems require modern solutions**
+
+## 🔦 How to use
+
+- Go to channel where you want to run commands _(you can change it in `.env`)_
+- Type your command and wait for the response
+
+## 🔩 Limitations
+
+- `sudo` commands are not supported
+- Text inputs are not supported (e.g. `nano`)
+- `cd` command is partially supported (you can change default directory in `.env`)
+- Colored output is not supported and can be broken
+  > **Note** `cd` is supported when it's at the beginning of a command
+
 ## 🔐 `.env` config
 
 ```
