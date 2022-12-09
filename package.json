@@ -31,7 +31,7 @@
     "remote-connection"
   ],
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "author": "Igor Kowalczyk",
   "license": "MIT",
