@@ -30,9 +30,6 @@
     "ssh",
     "remote-connection"
   ],
-  "engines": {
-    "node": "18.x"
-  },
   "author": "Igor Kowalczyk",
   "license": "MIT",
   "bugs": {
