@@ -6,7 +6,7 @@ specifiers:
   dotenv: 16.0.3
   prettier: 2.8.1
   strip-ansi: 7.0.1
-  systeminformation: 5.16.9
+  systeminformation: 5.17.0
 
 dependencies:
   chalk: 5.2.0
@@ -14,7 +14,7 @@ dependencies:
   dotenv: 16.0.3
   prettier: 2.8.1
   strip-ansi: 7.0.1
-  systeminformation: 5.16.9
+  systeminformation: 5.17.0
 
 packages:
 
@@ -219,8 +219,8 @@ packages:
       peek-readable: 5.0.0
     dev: false
 
-  /systeminformation/5.16.9:
-    resolution: {integrity: sha512-QTlv3GGSromPeLVW3pzM6uxU8RbkacW9e0+ZX23GAXaX+XE0UToSygAxCJDHSty6RB9lAFHCHg+FfiXFChi/+w==}
+  /systeminformation/5.17.0:
+    resolution: {integrity: sha512-8RtkT1V0lJjsXYjxE7q0o9YXyTa21gAW6jqhGOd7HdyWGjbkHhu23L0sMR/XuYxLoRxG55waWxDvABJOudw6bA==}
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
