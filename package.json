@@ -16,7 +16,7 @@
     "dotenv": "16.0.3",
     "prettier": "2.8.2",
     "strip-ansi": "7.0.1",
-    "systeminformation": "5.17.1"
+    "systeminformation": "5.17.3"
   },
   "repository": {
     "type": "git",
