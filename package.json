@@ -36,5 +36,5 @@
     "url": "https://github.com/IgorKowalczyk/discord-ssh/issues"
   },
   "homepage": "https://github.com/IgorKowalczyk/discord-ssh#readme",
-  "packageManager": "pnpm@7.24.3"
+  "packageManager": "pnpm@7.25.0"
 }
