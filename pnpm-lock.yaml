@@ -4,7 +4,7 @@ specifiers:
   chalk: 5.2.0
   discord.js: 14.7.1
   dotenv: 16.0.3
-  prettier: 2.8.2
+  prettier: 2.8.3
   strip-ansi: 7.0.1
   systeminformation: 5.17.3
 
@@ -12,7 +12,7 @@ dependencies:
   chalk: 5.2.0
   discord.js: 14.7.1
   dotenv: 16.0.3
-  prettier: 2.8.2
+  prettier: 2.8.3
   strip-ansi: 7.0.1
   systeminformation: 5.17.3
 
@@ -167,8 +167,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: false
 
-  /prettier/2.8.2:
-    resolution: {integrity: sha512-BtRV9BcncDyI2tsuS19zzhzoxD8Dh8LiCx7j7tHzrkz8GFXAexeWFdi22mjE1d16dftH2qNaytVxqiRTGlMfpw==}
+  /prettier/2.8.3:
+    resolution: {integrity: sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: false
