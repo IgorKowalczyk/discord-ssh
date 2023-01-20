@@ -4,8 +4,7 @@ import { EventEmitter } from "node:events";
 import stripAnsi from "strip-ansi";
 import chalk from "chalk";
 import systeminformation from "systeminformation";
-import * as dotenv from "dotenv";
-dotenv.config();
+import "dotenv/config";
 console.log(chalk.cyan(chalk.bold(`[DISCORD] > Starting SSH...`)));
 
 const client = new Client({
@@ -32,21 +31,21 @@ EventEmitter.prototype._maxListeners = 100;
 // Cache stats to eliminate "lag" on command
 setInterval(() => {
  systeminformation.cpuTemperature().then((data) => {
-  client.cpu_temperature = data.main;
+  client.cpuTemperature = data.main;
  });
 
  systeminformation.currentLoad().then((data) => {
-  client.cpu_usage = data.currentLoad.toFixed(2);
+  client.cpuUsage = data.currentLoad.toFixed(2);
  });
 
  systeminformation.mem().then((data) => {
   const total = (data.total / 1048576).toFixed(2);
   const used = (data.used / 1048576).toFixed(2);
-  client.memory_percentage = ((used * 100) / total).toFixed(2);
+  client.memoryPercentage = ((used * 100) / total).toFixed(2);
  });
 }, 5000);
 
-async function exec(input, options, custom_cwd) {
+async function exec(input, options, customCWD) {
  if (options?.terminal)
   await (await client.config.channel.fetchWebhooks()).first().send(input, {
    username: client.config.channel.guild.members.cache.get(client.config.owner.id)?.nickname || client.config.owner.username,
@@ -58,7 +57,7 @@ async function exec(input, options, custom_cwd) {
  let cmd = spawn(`${command}`, args, {
   shell: true,
   env: { COLUMNS: 128 },
-  cwd: custom_cwd || client.config.cwd,
+  cwd: customCWD || client.config.cwd,
  });
 
  cmd.stdout.on("data", (data) => {
@@ -78,20 +77,20 @@ async function exec(input, options, custom_cwd) {
      return chunkStr(str.substring(n), n, acc);
     }
    };
-   const output_discord = chunkStr(output, 4000, []);
+   const outputDiscord = chunkStr(output, 4000, []);
 
    const embed = new EmbedBuilder().setColor("#4f545c").setTitle("📤 Output").setTimestamp();
    let i = 0;
-   output_discord.forEach((item) => {
+   outputDiscord.forEach((item) => {
     i++;
-    embed.setFooter({ text: `Page ${i}/${output_discord.length}`, icon: client.user.displayAvatarURL() });
+    embed.setFooter({ text: `Page ${i}/${outputDiscord.length}`, icon: client.user.displayAvatarURL() });
     embed.setDescription(`\`\`\`${stripAnsi(item, true) || "No output!"}\`\`\``);
-    if (i == output_discord.length) embed.addFields([{ name: `\u200B`, value: `\`\`\`CWD: ${custom_cwd}\nCPU: ${client.cpu_usage}% | RAM: ${client.memory_percentage}% | Temp: ${client.cpu_temperature}°C\`\`\`` }]);
-    const final_message = client.config.channel.messages.cache.first();
+    if (i == outputDiscord.length) embed.addFields([{ name: `\u200B`, value: `\`\`\`CWD: ${customCWD}\nCPU: ${client.cpuUsage}% | RAM: ${client.memoryPercentage}% | Temp: ${client.cpuTemperature}°C\`\`\`` }]);
+    const finalMessage = client.config.channel.messages.cache.first();
     if (i !== 1) {
      client.config.channel.send({ embeds: [embed] });
     } else {
-     final_message.reply({ embeds: [embed] });
+     finalMessage.reply({ embeds: [embed] });
     }
    });
   }
@@ -134,31 +133,15 @@ client.login(client.config.token).catch(() => {
  throw new Error("Invalid TOKEN in .env");
 });
 
-process.on("unhandledRejection", (reason, p) => {
- client.channels.fetch(client.config.channel).then((channel) => {
-  const embed = new EmbedBuilder().setColor("#ff0000").setTitle("❌ Unhandled Rejection").setDescription(`\`\`\`${reason}\`\`\``).setTimestamp();
-  channel.send({ embeds: [embed] });
- });
- return;
+process.on("unhandledRejection", async (reason) => {
+ return console.log(chalk.red(chalk.bold(`[ERROR] > Unhandled Rejection: ${reason}`)));
 });
-process.on("uncaughtException", (err, origin) => {
- client.channels.fetch(client.config.channel).then((channel) => {
-  const embed = new EmbedBuilder().setColor("#ff0000").setTitle("❌ Uncaught Exception").setDescription(`\`\`\`${err}\`\`\``).setTimestamp();
-  channel.send({ embeds: [embed] });
- });
- return;
+process.on("uncaughtException", async (err) => {
+ return console.log(chalk.red(chalk.bold(`[ERROR] > Uncaught Exception: ${err}`)));
 });
-process.on("uncaughtExceptionMonitor", (err, origin) => {
- client.channels.fetch(client.config.channel).then((channel) => {
-  const embed = new EmbedBuilder().setColor("#ff0000").setTitle("❌ Uncaught Exception Monitor").setDescription(`\`\`\`${err}\`\`\``).setTimestamp();
-  channel.send({ embeds: [embed] });
- });
- return;
+process.on("uncaughtExceptionMonitor", async (err) => {
+ return console.log(chalk.red(chalk.bold(`[ERROR] > Uncaught Exception Monitor: ${err}`)));
 });
-process.on("multipleResolves", (type, promise, reason) => {
- client.channels.fetch(client.config.channel).then((channel) => {
-  const embed = new EmbedBuilder().setColor("#ff0000").setTitle("❌ Multiple Resolves").setDescription(`\`\`\`${reason}\`\`\``).setTimestamp();
-  channel.send({ embeds: [embed] });
- });
- return;
+process.on("multipleResolves", async (type, promise, reason) => {
+ return console.log(chalk.red(chalk.bold(`[ERROR] > Multiple resolves: ${type} ${promise} ${reason}`)));
 });

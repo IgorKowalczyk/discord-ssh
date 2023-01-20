@@ -8,12 +8,14 @@
     "start": "node index.js",
     "format": "prettier --write . --ignore-unknown",
     "format:check": "prettier --check .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint . --ext .js,.ts"
   },
   "dependencies": {
     "chalk": "5.2.0",
     "discord.js": "14.7.1",
     "dotenv": "16.0.3",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
     "prettier": "2.8.3",
     "strip-ansi": "7.0.1",
     "systeminformation": "5.17.3"
