@@ -8,7 +8,7 @@ specifiers:
   eslint-config-prettier: ^8.6.0
   prettier: 2.8.4
   strip-ansi: 7.0.1
-  systeminformation: 5.17.9
+  systeminformation: 5.17.10
 
 dependencies:
   chalk: 5.2.0
@@ -18,7 +18,7 @@ dependencies:
   eslint-config-prettier: 8.6.0_eslint@8.32.0
   prettier: 2.8.4
   strip-ansi: 7.0.1
-  systeminformation: 5.17.9
+  systeminformation: 5.17.10
 
 packages:
 
@@ -818,8 +818,8 @@ packages:
       has-flag: 4.0.0
     dev: false
 
-  /systeminformation/5.17.9:
-    resolution: {integrity: sha512-inxwRLI/4qpx4o85R54/zdhNagdBGBgs0la7Vl3qBorRVKRDk0nNsDTCGzG4lOITsw1gl7LRWeG4Zsp1pC8nfg==}
+  /systeminformation/5.17.10:
+    resolution: {integrity: sha512-FUm264baeDpruTw4P50BRRmYHD39D3jkOQ0VpNIkp8CdNejQbsp4Me18jacGBc/mWSVxKdQw4wSHmcL7ERxrNg==}
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
