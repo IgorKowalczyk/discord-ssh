@@ -18,7 +18,7 @@
     "eslint-config-prettier": "8.6.0",
     "prettier": "2.8.4",
     "strip-ansi": "7.0.1",
-    "systeminformation": "5.17.10"
+    "systeminformation": "5.17.11"
   },
   "repository": {
     "type": "git",
