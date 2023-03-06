@@ -5,7 +5,7 @@ specifiers:
   discord.js: 14.7.1
   dotenv: 16.0.3
   eslint: 8.35.0
-  eslint-config-prettier: 8.6.0
+  eslint-config-prettier: 8.7.0
   prettier: 2.8.4
   strip-ansi: 7.0.1
   systeminformation: 5.17.12
@@ -15,7 +15,7 @@ dependencies:
   discord.js: 14.7.1
   dotenv: 16.0.3
   eslint: 8.35.0
-  eslint-config-prettier: 8.6.0_eslint@8.35.0
+  eslint-config-prettier: 8.7.0_eslint@8.35.0
   prettier: 2.8.4
   strip-ansi: 7.0.1
   systeminformation: 5.17.12
@@ -315,8 +315,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /eslint-config-prettier/8.6.0_eslint@8.35.0:
-    resolution: {integrity: sha512-bAF0eLpLVqP5oEVUFKpMA+NnRFICwn9X8B5jrR9FcqnYBuPbqWEjTEspPWMj5ye6czoSLDweCzSo3Ko7gGrZaA==}
+  /eslint-config-prettier/8.7.0_eslint@8.35.0:
+    resolution: {integrity: sha512-HHVXLSlVUhMSmyW4ZzEuvjpwqamgmlfkutD53cYXLikh4pt/modINRcCIApJ84czDxM4GZInwUrromsDdTImTA==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
