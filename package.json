@@ -15,7 +15,7 @@
     "discord.js": "14.7.1",
     "dotenv": "16.0.3",
     "eslint": "8.35.0",
-    "eslint-config-prettier": "8.6.0",
+    "eslint-config-prettier": "8.7.0",
     "prettier": "2.8.4",
     "strip-ansi": "7.0.1",
     "systeminformation": "5.17.12"
