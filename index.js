@@ -1,11 +1,11 @@
+import chalk from "chalk";
 import { EmbedBuilder, Client, GatewayIntentBits, Events, ActivityType } from "discord.js";
+import stripAnsi from "strip-ansi";
+import systeminformation from "systeminformation";
 import { spawn } from "node:child_process";
 import { EventEmitter } from "node:events";
-import stripAnsi from "strip-ansi";
-import chalk from "chalk";
-import systeminformation from "systeminformation";
 import "dotenv/config";
-console.log(chalk.cyan(chalk.bold(`[DISCORD] > Starting SSH...`)));
+console.log(chalk.cyan(chalk.bold("[DISCORD] > Starting SSH...")));
 
 const client = new Client({
  allowedMentions: {
@@ -85,7 +85,7 @@ async function exec(input, options, customCWD) {
     i++;
     embed.setFooter({ text: `Page ${i}/${outputDiscord.length}`, icon: client.user.displayAvatarURL() });
     embed.setDescription(`\`\`\`${stripAnsi(item, true) || "No output!"}\`\`\``);
-    if (i == outputDiscord.length) embed.addFields([{ name: `\u200B`, value: `\`\`\`CWD: ${customCWD}\nCPU: ${client.cpuUsage}% | RAM: ${client.memoryPercentage}% | Temp: ${client.cpuTemperature}°C\`\`\`` }]);
+    if (i == outputDiscord.length) embed.addFields([{ name: "\u200B", value: `\`\`\`CWD: ${customCWD}\nCPU: ${client.cpuUsage}% | RAM: ${client.memoryPercentage}% | Temp: ${client.cpuTemperature}°C\`\`\`` }]);
     const finalMessage = client.config.channel.messages.cache.first();
     if (i !== 1) {
      client.config.channel.send({ embeds: [embed] });
