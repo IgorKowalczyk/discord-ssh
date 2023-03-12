@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import { EmbedBuilder, Client, GatewayIntentBits, Events, ActivityType } from "discord.js";
 import stripAnsi from "strip-ansi";
-import systeminformation from "systeminformation";
+import { cpuTemperature, currentLoad, mem } from "systeminformation";
 import { spawn } from "node:child_process";
 import { EventEmitter } from "node:events";
 import "dotenv/config";
@@ -30,15 +30,15 @@ EventEmitter.prototype._maxListeners = 100;
 
 // Cache stats to eliminate "lag" on command
 setInterval(() => {
- systeminformation.cpuTemperature().then((data) => {
+ cpuTemperature().then((data) => {
   client.cpuTemperature = data.main;
  });
 
- systeminformation.currentLoad().then((data) => {
+ currentLoad().then((data) => {
   client.cpuUsage = data.currentLoad.toFixed(2);
  });
 
- systeminformation.mem().then((data) => {
+ mem().then((data) => {
   const total = (data.total / 1048576).toFixed(2);
   const used = (data.used / 1048576).toFixed(2);
   client.memoryPercentage = ((used * 100) / total).toFixed(2);
@@ -141,7 +141,4 @@ process.on("uncaughtException", async (err) => {
 });
 process.on("uncaughtExceptionMonitor", async (err) => {
  return console.log(chalk.red(chalk.bold(`[ERROR] > Uncaught Exception Monitor: ${err}`)));
-});
-process.on("multipleResolves", async (type, promise, reason) => {
- return console.log(chalk.red(chalk.bold(`[ERROR] > Multiple resolves: ${type} ${promise} ${reason}`)));
 });
