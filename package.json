@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --ext .js,.ts --fix"
   },
   "dependencies": {
-    "@igorkowalczyk/eslint-config": "1.0.0",
+    "@igorkowalczyk/eslint-config": "1.0.2",
     "@igorkowalczyk/prettier-config": "1.0.0",
     "chalk": "5.2.0",
     "discord.js": "14.7.1",
