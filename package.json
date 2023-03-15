@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "chalk": "5.2.0",
-    "discord.js": "14.7.1",
+    "discord.js": "14.8.0",
     "dotenv": "16.0.3",
     "strip-ansi": "7.0.1",
     "systeminformation": "5.17.12"
@@ -36,7 +36,7 @@
     "url": "https://github.com/IgorKowalczyk/discord-ssh/issues"
   },
   "homepage": "https://github.com/IgorKowalczyk/discord-ssh#readme",
-  "packageManager": "pnpm@7.29.1",
+  "packageManager": "pnpm@7.29.3",
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "1.0.3",
     "@igorkowalczyk/prettier-config": "1.0.3",
