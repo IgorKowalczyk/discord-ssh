@@ -11,8 +11,8 @@ dependencies:
     specifier: 16.0.3
     version: 16.0.3
   strip-ansi:
-    specifier: 7.0.1
-    version: 7.0.1
+    specifier: 7.1.0
+    version: 7.1.0
   systeminformation:
     specifier: 5.17.13
     version: 5.17.13
@@ -1379,8 +1379,8 @@ packages:
       ansi-regex: 5.0.1
     dev: true
 
-  /strip-ansi@7.0.1:
-    resolution: {integrity: sha512-cXNxvT8dFNRVfhVME3JAe98mkXDYN2O1l7jmcwMnOslDeESg1rF/OZMtK0nRAhiari1unG5cD4jG3rapUAkLbw==}
+  /strip-ansi@7.1.0:
+    resolution: {integrity: sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==}
     engines: {node: '>=12'}
     dependencies:
       ansi-regex: 6.0.1
