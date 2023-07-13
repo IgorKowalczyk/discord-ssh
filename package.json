@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "format": "prettier --write . --ignore-unknown --cache",
-    "format:check": "prettier --check --cache .",
+    "format": "prettier . --write --ignore-unknown --cache",
+    "format:check": "prettier . --check --cache",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "eslint . --ext .js,.ts --fix"
   },
