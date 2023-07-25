@@ -18,8 +18,8 @@ dependencies:
     specifier: 7.1.0
     version: 7.1.0
   systeminformation:
-    specifier: 5.18.7
-    version: 5.18.7
+    specifier: 5.18.8
+    version: 5.18.8
 
 devDependencies:
   '@igorkowalczyk/eslint-config':
@@ -1699,8 +1699,8 @@ packages:
       tslib: 2.6.0
     dev: true
 
-  /systeminformation@5.18.7:
-    resolution: {integrity: sha512-ROxysxhjjnhWxQDkDPxCCQdeOt9IUKIGgfM0A++kqqNC+V/hAHQRshyG+5421R//DsOfXFc11pUFGpzA8YqRNQ==}
+  /systeminformation@5.18.8:
+    resolution: {integrity: sha512-ot0QuNpIsiSBXSxMN7JdUYcQ8urqQ5dcYfoPF3Ac9aOVJ5RamtLKS+fTxIcYmjgCfht7E/UJ0VEkubQnFPgLtg==}
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
