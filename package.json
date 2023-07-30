@@ -36,7 +36,7 @@
     "url": "https://github.com/IgorKowalczyk/discord-ssh/issues"
   },
   "homepage": "https://github.com/IgorKowalczyk/discord-ssh#readme",
-  "packageManager": "pnpm@8.6.10",
+  "packageManager": "pnpm@8.6.11",
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "1.5.4",
     "@igorkowalczyk/prettier-config": "1.5.4",
