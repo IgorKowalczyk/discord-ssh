@@ -16,7 +16,7 @@
     "discord.js": "14.12.1",
     "dotenv": "16.3.1",
     "strip-ansi": "7.1.0",
-    "systeminformation": "5.18.14"
+    "systeminformation": "5.18.15"
   },
   "repository": {
     "type": "git",
