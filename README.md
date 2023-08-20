@@ -26,7 +26,9 @@ I created this bot to run shell commands on my server remotely through Discord.
 - Text inputs are not supported (e.g. `nano`)
 - `cd` command is partially supported (you can change default directory in `.env`)
 - Colored output is not supported and can be broken
-  > **Note** `cd` is supported when it's at the beginning of a command
+
+> [!NOTE]
+> Changing directory (`cd`) is supported when it's at the beginning of a command
 
 ## 🔐 `.env` config
 
