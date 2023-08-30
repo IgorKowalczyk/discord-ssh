@@ -57,7 +57,7 @@ async function exec(input, options, customCWD) {
  let cmd = spawn(`${command}`, args, {
   shell: true,
   env: { COLUMNS: 128 },
-  cwd: customCWD || client.config.cwd,
+  cwd: customCWD || client.config.cwd || process.cwd(),
  });
 
  cmd.stdout.on("data", (data) => {

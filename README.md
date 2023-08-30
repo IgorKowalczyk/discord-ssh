@@ -28,22 +28,19 @@ I can also use it to run commands on my local machine.
 
 ## 📦 Installation
 
-1. Clone the repo (`git clone https://github.com/igorkowalczyk/discord-ssh.git`)
-2. Install dependencies (`npm install` / `pnpm install`)
+1. Clone the repo `git clone https://github.com/igorkowalczyk/discord-ssh.git`
+2. Install dependencies `npm install` or `pnpm install`
 3. Create `.env` file and fill it with your data (see [`.env` config](#-env-config))
-4. Run the bot (`npm run start` / `pnpm run start`)
+4. Run the bot `npm run start` or `pnpm run start`
 5. Invite the bot to your server
 6. Send command in channel which you set in `.env` file
 7. Wait for the response, that's it!
 
+> [!WARNING]
+> You have to enable `Message Content` intent in your [Discord Developer Portal](https://discord.com/developers/applications) to use this bot!
+
 > [!NOTE]
-> You have to enable `Message Content` intent in your [Discord Developer Portal](https://discord.com/developers/applications) to use this bot!  
-> Bot will not respond to messages in other channels or other members than you (bot owner)
-
-## 🔦 How to use
-
-- Go to channel where you want to run commands _(you can change it in `.env`)_
-- Type your command and wait for the response _(it may take a while)_
+> Bot will not respond to messages in other channels or other members than you (bot owner) unless you change it in the `.env` file or in the code
 
 ## 🔩 Limitations
 
@@ -63,6 +60,19 @@ OWNER_ID=BOT_OWNER_ID
 TOKEN=DISCORD_BOT_TOKEN
 CUSTOM_CWD=DEFAULT_SSH_DIR_PATH
 ```
+
+| Variable     | Description                                   | Required |
+| ------------ | --------------------------------------------- | -------- |
+| `CHANNEL_ID` | Channel ID where bot will listen for commands | `true`   |
+| `OWNER_ID`   | Discord user ID who can use the bot           | `true`   |
+| `TOKEN`      | Discord bot token                             | `true`   |
+| `CUSTOM_CWD` | Default directory for SSH commands            | `false`  |
+
+> [!WARNING]
+> The `CUSTOM_CWD` variable defaults to the directory where the bot is running!
+
+> [!NOTE]
+> You can get your Discord user ID by enabling `Developer Mode` in Discord settings and right-clicking on your profile
 
 ## ⁉️ Issues
 
