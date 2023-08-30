@@ -2,16 +2,16 @@
 
 <div align="center">
   <a aria-label="Discord" href="https://igorkowalczyk.dev/r/discord">
-    <img src="https://img.shields.io/discord/666599184844980224?color=6005D2&logo=discord&label=Discord&style=flat-square&logoColor=fff">
+    <img src="https://img.shields.io/discord/666599184844980224?color=5865F2&logo=discord&label=Discord&logoColor=fff">
   </a>
   <a aria-label="Discord.js" href="https://www.npmjs.com/package/discord.js">
-    <img src="https://img.shields.io/badge/Discord.js-v14-%2334d058?style=flat-square&color=6005D2&logo=npm&logoColor=fff">
+    <img src="https://img.shields.io/badge/Discord.js-v14-%2334d058?color=5865F2&logo=npm&logoColor=fff">
   </a>
   <a aria-label="CodeQL Checks" href="https://igorkowalczyk.dev/">
-    <img src="https://img.shields.io/github/actions/workflow/status/igorkowalczyk/discord-ssh/codeql-analysis.yml?branch=main&style=flat-square&label=CodeQL&logo=github&color=6005D2">
+    <img src="https://img.shields.io/github/actions/workflow/status/igorkowalczyk/discord-ssh/codeql-analysis.yml?branch=main&label=CodeQL&logo=github&color=5865F2">
   </a>
   <a aria-label="GitHub License" href="https://github.com/igorkowalczyk/discord-ssh">
-    <img src="https://img.shields.io/github/license/igorkowalczyk/discord-ssh?style=flat-square&logo=github&label=License&color=6005D2">
+    <img src="https://img.shields.io/github/license/igorkowalczyk/discord-ssh?logo=github&label=License&color=5865F2">
   </a>
 </div>
 
