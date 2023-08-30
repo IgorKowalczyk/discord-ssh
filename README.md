@@ -36,6 +36,10 @@ I can also use it to run commands on my local machine.
 6. Send command in channel which you set in `.env` file
 7. Wait for the response, that's it!
 
+> [!NOTE]
+> You have to enable `Message Content` intent in your [Discord Developer Portal](https://discord.com/developers/applications) to use this bot!  
+> Bot will not respond to messages in other channels or other members than you (bot owner)
+
 ## 🔦 How to use
 
 - Go to channel where you want to run commands _(you can change it in `.env`)_
