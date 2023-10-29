@@ -1,8 +1,8 @@
 ![Discord.ssh](https://github.com/IgorKowalczyk/discord-ssh/assets/49127376/2c5d3d33-0b5f-4f1d-b1c6-a78360d5a129)
 
 <div align="center">
-  <a aria-label="Discord" href="https://igorkowalczyk.dev/r/discord">
-    <img src="https://img.shields.io/discord/666599184844980224?color=5865F2&logo=discord&label=Discord&logoColor=fff">
+  <a aria-label="Discord" href="https://igorkowalczyk.dev/discord">
+    <img src="https://img.shields.io/discord/695282860399001640?color=5865F2&logo=discord&label=Discord&logoColor=fff">
   </a>
   <a aria-label="Discord.js" href="https://www.npmjs.com/package/discord.js">
     <img src="https://img.shields.io/badge/Discord.js-v14-%2334d058?color=5865F2&logo=npm&logoColor=fff">
