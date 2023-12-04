@@ -1,9 +1,9 @@
+import { spawn } from "node:child_process";
+import { EventEmitter } from "node:events";
 import chalk from "chalk";
 import { EmbedBuilder, Client, GatewayIntentBits, Events, ActivityType } from "discord.js";
 import stripAnsi from "strip-ansi";
 import { cpuTemperature, currentLoad, mem } from "systeminformation";
-import { spawn } from "node:child_process";
-import { EventEmitter } from "node:events";
 import "dotenv/config";
 console.log(chalk.cyan(chalk.bold("[DISCORD] > Starting SSH...")));
 
