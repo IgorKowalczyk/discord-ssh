@@ -52,9 +52,9 @@ async function exec(input, options, customCWD) {
    avatarURL: client.config.owner.displayAvatarURL({ format: "png" }),
   });
  let output = "";
- let args = input.split(" ");
- let command = args.shift();
- let cmd = spawn(`${command}`, args, {
+ const args = input.split(" ");
+ const command = args.shift();
+ const cmd = spawn(`${command}`, args, {
   shell: true,
   env: { COLUMNS: 128 },
   cwd: customCWD || client.config.cwd || process.cwd(),
