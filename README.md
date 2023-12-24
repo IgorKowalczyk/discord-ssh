@@ -29,14 +29,16 @@ I can also use it to run commands on my local machine.
 ## 📦 Installation
 
 1. Clone the repo `git clone https://github.com/igorkowalczyk/discord-ssh.git`
-2. Install dependencies `npm install` or `pnpm install`
-3. Create `.env` file and fill it with your data (see [`.env` config](#-env-config))
-4. Run the bot `npm run start` or `pnpm run start`
-5. Invite the bot to your server
-6. Send command in channel which you set in `.env` file
-7. Wait for the response, that's it!
+2. Install dependencies `pnpm install` or `npm install`
+3. Create `.env` file in the root directory
+4. Copy the content from [`.env` config](#-env-config)
+5. Fill the `.env` file with your data
+6. Run the bot `pnpm run start` or `npm run start` (or `pnpm run dev` or `npm run dev` for development)
+7. Invite the bot to your server (see [Discord Developer Portal](https://discord.com/developers/applications))
+8. Send command in channel which you set in `.env` file
+9. Wait for the response, that's it!
 
-> [!WARNING]
+> [!IMPORTANT]
 > You have to enable `Message Content` intent in your [Discord Developer Portal](https://discord.com/developers/applications) to use this bot!
 
 > [!NOTE]
@@ -44,35 +46,34 @@ I can also use it to run commands on my local machine.
 
 ## 🔩 Limitations
 
-- `sudo` commands are not supported
-- Text inputs are not supported (e.g. `nano`)
-- `cd` command is partially supported (you can change default directory in `.env`)
-- Colored output is not supported and can be broken
+- `sudo` / `su`commands are not supported, and probably never will be (for security reasons).
+- Text inputs are not supported (e.g. `nano`), but you can use `echo` to create/edit files.
+- Colored output is not supported and can be broken!
 
 > [!NOTE]
-> Changing directory (`cd`) is supported when it's at the beginning of a command
+> Changing directory (`cd`) is supported when it's at the beginning of a command!
 
 ## 🔐 `.env` config
 
-```
-CHANNEL_ID=CHANNEL_ID_TO_RUN_SSH_COMMANDS
-OWNER_ID=BOT_OWNER_ID
-TOKEN=DISCORD_BOT_TOKEN
-CUSTOM_CWD=DEFAULT_SSH_DIR_PATH
+```sh
+# Copy this file to .env and fill in the values.
+
+CHANNEL_ID="Discord channel ID"
+OWNERS_IDS="ID 1,ID 2,ID 3"
+TOKEN="Discord bot token"
+CUSTOM_CWD="Default path to the bot's working directory (optional - remove this line if you don't need it)"
+
 ```
 
-| Variable     | Description                                   | Required |
-| ------------ | --------------------------------------------- | -------- |
-| `CHANNEL_ID` | Channel ID where bot will listen for commands | `true`   |
-| `OWNER_ID`   | Discord user ID who can use the bot           | `true`   |
-| `TOKEN`      | Discord bot token                             | `true`   |
-| `CUSTOM_CWD` | Default directory for SSH commands            | `false`  |
-
-> [!WARNING]
-> The `CUSTOM_CWD` variable defaults to the directory where the bot is running!
+| Variable     | Description                                       | Required |
+| ------------ | ------------------------------------------------- | -------- |
+| `CHANNEL_ID` | Channel ID where bot will listen for commands     | `✅ Yes` |
+| `OWNERS_IDS` | Users IDs who can use the bot (separated by `,`)  | `✅ Yes` |
+| `TOKEN`      | Discord bot token                                 | `✅ Yes` |
+| `CUSTOM_CWD` | Default directory for SSH commands (Default: `/`) | `❌ No`  |
 
 > [!NOTE]
-> You can get your Discord user ID by enabling `Developer Mode` in Discord settings and right-clicking on your profile
+> You can get your Discord user ID/Cannel ID by enabling `Developer Mode` in Discord settings and right-clicking on your profile or channel
 
 ## ⁉️ Issues
 
