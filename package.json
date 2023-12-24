@@ -20,10 +20,26 @@
     "strip-ansi": "7.1.0",
     "systeminformation": "5.21.22"
   },
+  "devDependencies": {
+    "@igorkowalczyk/eslint-config": "2.2.0",
+    "@igorkowalczyk/prettier-config": "2.2.0",
+    "eslint": "8.56.0",
+    "nodemon": "3.0.2",
+    "prettier": "3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IgorKowalczyk/discord-ssh.git"
   },
+  "author": "Igor Kowalczyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IgorKowalczyk/discord-ssh/issues"
+  },
+  "homepage": "https://github.com/IgorKowalczyk/discord-ssh#readme",
   "keywords": [
     "discord",
     "node-js",
@@ -32,18 +48,5 @@
     "ssh",
     "remote-connection"
   ],
-  "author": "Igor Kowalczyk",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/IgorKowalczyk/discord-ssh/issues"
-  },
-  "homepage": "https://github.com/IgorKowalczyk/discord-ssh#readme",
-  "packageManager": "pnpm@8.12.1",
-  "devDependencies": {
-    "@igorkowalczyk/eslint-config": "2.2.0",
-    "@igorkowalczyk/prettier-config": "2.2.0",
-    "eslint": "8.56.0",
-    "nodemon": "3.0.2",
-    "prettier": "3.1.1"
-  }
+  "packageManager": "pnpm@8.12.1"
 }

@@ -46,9 +46,9 @@ I can also use it to run commands on my local machine.
 
 ## 🔩 Limitations
 
-- `sudo` commands are not supported, and probably never will be (for security reasons)
-- Text inputs are not supported (e.g. `nano`), but you can use `echo` to create files
-- Colored output is not supported and can be broken
+- `sudo` / `su`commands are not supported, and probably never will be (for security reasons).
+- Text inputs are not supported (e.g. `nano`), but you can use `echo` to create/edit files.
+- Colored output is not supported and can be broken!
 
 > [!NOTE]
 > Changing directory (`cd`) is supported when it's at the beginning of a command!
@@ -67,13 +67,13 @@ CUSTOM_CWD="Default path to the bot's working directory (optional - remove this 
 
 | Variable     | Description                                       | Required |
 | ------------ | ------------------------------------------------- | -------- |
-| `CHANNEL_ID` | Channel ID where bot will listen for commands     | `true`   |
-| `OWNERS_IDS` | Users IDs who can use the bot (separated by `,`)  | `true`   |
-| `TOKEN`      | Discord bot token                                 | `true`   |
-| `CUSTOM_CWD` | Default directory for SSH commands (Default: `/`) | `false`  |
+| `CHANNEL_ID` | Channel ID where bot will listen for commands     | `✅ Yes` |
+| `OWNERS_IDS` | Users IDs who can use the bot (separated by `,`)  | `✅ Yes` |
+| `TOKEN`      | Discord bot token                                 | `✅ Yes` |
+| `CUSTOM_CWD` | Default directory for SSH commands (Default: `/`) | `❌ No`  |
 
 > [!NOTE]
-> You can get your Discord user ID by enabling `Developer Mode` in Discord settings and right-clicking on your profile
+> You can get your Discord user ID/Cannel ID by enabling `Developer Mode` in Discord settings and right-clicking on your profile or channel
 
 ## ⁉️ Issues
 
