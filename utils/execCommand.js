@@ -22,7 +22,6 @@ export async function execCommand(client, input) {
   const { main: cpuTemperature } = await checkCpuTemperature();
   const { currentLoad: cpuUsage } = await currentLoad();
   const memoryTest = await mem();
-
   const memoryPercentage = ((memoryTest.used / 1048576 / (memoryTest.total / 1048576)) * 100).toFixed(2);
 
   const args = input.split(" ");
@@ -51,7 +50,7 @@ export async function execCommand(client, input) {
     .setFooter({ text: `Page ${index2}/${outputDiscord.length}`, icon: client.user.displayAvatarURL() })
     .setDescription(codeBlock(stripAnsi(item, true) || "No output!"));
 
-   if (index2 == outputDiscord.length) embed.setDescription(`${embed.data.description}\n${codeBlock(`CWD: ${client.customCWD}\nCPU: ${cpuUsage}% | RAM: ${memoryPercentage}% | Temp: ${cpuTemperature}°C`)}`);
+   if (index2 == outputDiscord.length) embed.setDescription(`${embed.data.description}\n${codeBlock(`CWD: ${client.customCWD}\nCPU: ${Math.round(cpuUsage)}% | RAM: ${Math.round(memoryPercentage)}% | Temp: ${Math.round(cpuTemperature)}°C`)}`);
 
    const finalMessage = defaultConfig.channel.messages.cache.first();
    if (index2 !== 1) defaultConfig.channel.send({ embeds: [embed] });
