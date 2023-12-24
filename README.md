@@ -32,11 +32,11 @@ I can also use it to run commands on my local machine.
 2. Install dependencies `npm install` or `pnpm install`
 3. Create `.env` file and fill it with your data (see [`.env` config](#-env-config))
 4. Run the bot `npm run start` or `pnpm run start`
-5. Invite the bot to your server
+5. Invite the bot to your server (see [Discord Developer Portal](https://discord.com/developers/applications))
 6. Send command in channel which you set in `.env` file
 7. Wait for the response, that's it!
 
-> [!WARNING]
+> [!IMPORTANT]
 > You have to enable `Message Content` intent in your [Discord Developer Portal](https://discord.com/developers/applications) to use this bot!
 
 > [!NOTE]
@@ -46,11 +46,10 @@ I can also use it to run commands on my local machine.
 
 - `sudo` commands are not supported
 - Text inputs are not supported (e.g. `nano`)
-- `cd` command is partially supported (you can change default directory in `.env`)
 - Colored output is not supported and can be broken
 
 > [!NOTE]
-> Changing directory (`cd`) is supported when it's at the beginning of a command
+> Changing directory (`cd`) is supported when it's at the beginning of a command!
 
 ## 🔐 `.env` config
 
@@ -61,12 +60,12 @@ TOKEN=DISCORD_BOT_TOKEN
 CUSTOM_CWD=DEFAULT_SSH_DIR_PATH
 ```
 
-| Variable     | Description                                   | Required |
-| ------------ | --------------------------------------------- | -------- |
-| `CHANNEL_ID` | Channel ID where bot will listen for commands | `true`   |
-| `OWNER_ID`   | Discord user ID who can use the bot           | `true`   |
-| `TOKEN`      | Discord bot token                             | `true`   |
-| `CUSTOM_CWD` | Default directory for SSH commands            | `false`  |
+| Variable     | Description                                      | Required |
+| ------------ | ------------------------------------------------ | -------- |
+| `CHANNEL_ID` | Channel ID where bot will listen for commands    | `true`   |
+| `OWNERS_IDS` | Users IDs who can use the bot (separated by `,`) | `true`   |
+| `TOKEN`      | Discord bot token                                | `true`   |
+| `CUSTOM_CWD` | Default directory for SSH commands               | `false`  |
 
 > [!WARNING]
 > The `CUSTOM_CWD` variable defaults to the directory where the bot is running!

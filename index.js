@@ -1,10 +1,12 @@
+import "dotenv/config";
 import { spawn } from "node:child_process";
 import { EventEmitter } from "node:events";
+import path from "node:path";
 import chalk from "chalk";
-import { EmbedBuilder, Client, GatewayIntentBits, Events, ActivityType } from "discord.js";
+import { EmbedBuilder, Client, GatewayIntentBits, Events, ActivityType, codeBlock } from "discord.js";
 import stripAnsi from "strip-ansi";
-import { cpuTemperature, currentLoad, mem } from "systeminformation";
-import "dotenv/config";
+import { cpuTemperature as checkCpuTemperature, currentLoad, mem } from "systeminformation";
+import { defaultConfig } from "./config.js";
 console.log(chalk.cyan(chalk.bold("[DISCORD] > Starting SSH...")));
 
 const client = new Client({
@@ -12,133 +14,137 @@ const client = new Client({
   parse: ["users", "roles"],
   repliedUser: false,
  },
- presence: {
-  status: "online",
-  afk: false,
- },
  intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMembers | GatewayIntentBits.GuildPresences | GatewayIntentBits.GuildMessages | GatewayIntentBits.MessageContent,
 });
 
-client.config = {
- channel: process.env.CHANNEL_ID,
- owner: process.env.OWNER_ID,
- token: process.env.TOKEN,
- cwd: process.env.CUSTOM_CWD,
+let customCWD = process.env.CUSTOM_CWD || process.cwd();
+
+let monitoringData = {
+ cpuTemperature: 0,
+ cpuUsage: 0,
+ memoryPercentage: 0,
 };
 
 EventEmitter.prototype._maxListeners = 100;
 
-// Cache stats to eliminate "lag" on command
-setInterval(() => {
- cpuTemperature().then((data) => {
-  client.cpuTemperature = data.main;
- });
+const chunkString = (str, n, acc) => {
+ if (str.length === 0) return acc;
 
- currentLoad().then((data) => {
-  client.cpuUsage = data.currentLoad.toFixed(2);
- });
+ acc.push(str.substring(0, n));
+ return chunkString(str.substring(n), n, acc);
+};
 
- mem().then((data) => {
-  const total = (data.total / 1048576).toFixed(2);
-  const used = (data.used / 1048576).toFixed(2);
-  client.memoryPercentage = ((used * 100) / total).toFixed(2);
- });
+setInterval(async () => {
+ const cpuTemp = await checkCpuTemperature();
+ const cpuUsageTest = await currentLoad();
+ const memory = await mem();
+
+ monitoringData = {
+  cpuTemperature: cpuTemp.main,
+  cpuUsage: cpuUsageTest.currentLoad.toFixed(2),
+  memoryPercentage: ((memory.used / 1048576 / (memory.total / 1048576)) * 100).toFixed(2),
+ };
 }, 5000);
 
-async function exec(input, options, customCWD) {
- if (options?.terminal)
-  await (await client.config.channel.fetchWebhooks()).first().send(input, {
-   username: client.config.channel.guild.members.cache.get(client.config.owner.id)?.nickname || client.config.owner.username,
-   avatarURL: client.config.owner.displayAvatarURL({ format: "png" }),
-  });
+async function exec(input) {
  let output = "";
+
  const args = input.split(" ");
  const command = args.shift();
+
  const cmd = spawn(`${command}`, args, {
   shell: true,
   env: { COLUMNS: 128 },
-  cwd: customCWD || client.config.cwd || process.cwd(),
+  cwd: customCWD,
  });
 
- cmd.stdout.on("data", (data) => {
-  output += data;
- });
- cmd.stderr.on("data", (data) => {
-  output += data;
- });
+ cmd.stdout.on("data", (data) => (output += data));
+ cmd.stderr.on("data", (data) => (output += data));
+
  cmd.on("exit", async () => {
-  if (output) {
-   //await client.config.channel.bulkDelete(1);
-   const chunkStr = (str, n, acc) => {
-    if (str.length === 0) {
-     return acc;
-    } else {
-     acc.push(str.substring(0, n));
-     return chunkStr(str.substring(n), n, acc);
-    }
-   };
-   const outputDiscord = chunkStr(output, 4000, []);
+  const outputDiscord = chunkString(output || "", 3000, []);
 
-   const embed = new EmbedBuilder().setColor("#4f545c").setTitle("📤 Output").setTimestamp();
-   let i = 0;
-   outputDiscord.forEach((item) => {
-    i++;
-    embed.setFooter({ text: `Page ${i}/${outputDiscord.length}`, icon: client.user.displayAvatarURL() });
-    embed.setDescription(`\`\`\`${stripAnsi(item, true) || "No output!"}\`\`\``);
-    if (i == outputDiscord.length) embed.addFields([{ name: "\u200B", value: `\`\`\`CWD: ${customCWD}\nCPU: ${client.cpuUsage}% | RAM: ${client.memoryPercentage}% | Temp: ${client.cpuTemperature}°C\`\`\`` }]);
-    const finalMessage = client.config.channel.messages.cache.first();
-    if (i !== 1) {
-     client.config.channel.send({ embeds: [embed] });
-    } else {
-     finalMessage.reply({ embeds: [embed] });
-    }
-   });
-  }
+  const embed = new EmbedBuilder() // prettier
+   .setColor("#4f545c")
+   .setTitle(`${defaultConfig.emojis.output} Output`)
+   .setTimestamp();
+
+  outputDiscord.map((item, index) => {
+   const index2 = index + 1;
+   embed.setFooter({ text: `Page ${index2}/${outputDiscord.length}`, icon: client.user.displayAvatarURL() });
+   embed.setDescription(codeBlock(stripAnsi(item, true) || "No output!"));
+
+   if (index2 == outputDiscord.length) embed.setDescription(embed.data.description + `\n${codeBlock(`CWD: ${customCWD}\nCPU: ${monitoringData.cpuUsage}% | RAM: ${monitoringData.memoryPercentage}% | Temp: ${monitoringData.cpuTemperature}°C`)}`);
+
+   const finalMessage = defaultConfig.channel.messages.cache.first();
+   if (index2 !== 1) defaultConfig.channel.send({ embeds: [embed] });
+
+   finalMessage.reply({ embeds: [embed] });
+  });
  });
 }
 
-client.on(Events.MessageCreate, (msg) => {
- if (msg.author.bot) return;
- if (msg.channel === client.config.channel && msg.author === client.config.owner) {
-  if (msg.content.startsWith("cd")) {
-   const cd = new EmbedBuilder().setDescription("↪️ **Changed directory from `" + client.config.cwd + "` to `" + msg.content.split(" ")[1] + "`**\n\n<a:loading:895227261752582154> **Waiting for server response...**").setColor("#5865f2");
-   msg.reply({ embeds: [cd] });
-   exec(msg.content.split(" ").slice(2).join(" "), null, msg.content.split(" ")[1].toString());
-  } else {
-   const wait = new EmbedBuilder().setDescription("<a:loading:895227261752582154> **Waiting for server response...**").setColor("#5865f2");
-   msg.reply({ embeds: [wait] });
-   exec(msg.content, null, client.config.cwd);
+client.on(Events.MessageCreate, async (message) => {
+ if (message.author.bot) return;
+ if (message.channel !== defaultConfig.channel && !defaultConfig.owners.includes(message.author.id)) return;
+ if (!message.content) return;
+
+ if (message.content.startsWith("cd")) {
+  const newCWD = message.content.split(" ")[1];
+  if (!newCWD) return;
+
+  try {
+   process.chdir(path.resolve(customCWD, newCWD));
+
+   const changedDirectory = new EmbedBuilder() // prettier
+    .setDescription(`${defaultConfig.emojis.change} **Changed directory from \`${customCWD}\` to \`${path.resolve(customCWD, newCWD)}\`**`)
+    .setColor(defaultConfig.embedColor);
+
+   customCWD = path.resolve(customCWD, newCWD);
+   return message.reply({ embeds: [changedDirectory] });
+  } catch (err) {
+   const error = new EmbedBuilder() // prettier
+    .setDescription(`${defaultConfig.emojis.error} **${err.message}**`)
+    .setColor(defaultConfig.embedColor);
+
+   return message.reply({ embeds: [error] });
   }
  }
+
+ const wait = new EmbedBuilder() // prettier
+  .setDescription(`${defaultConfig.emojis.loading} **Waiting for server response...**`)
+  .setColor(defaultConfig.embedColor);
+
+ await message.reply({ embeds: [wait] });
+
+ await exec(message.content);
 });
 
 client.once(Events.ClientReady, async () => {
- client.config.channel = client.channels.cache.get(client.config.channel);
- if (!client.config.channel) {
-  throw new Error("Invalid CHANNEL_ID in .env!");
- }
- client.config.owner = await client.users.fetch(client.config.owner);
- if (!client.config.owner) {
-  throw new Error("Invalid OWNER_ID in .env!");
- }
+ defaultConfig.channel = client.channels.cache.get(defaultConfig.channel);
+ if (!defaultConfig.channel) throw new Error("Invalid CHANNEL_ID in .env!");
 
- if (!(await client.config.channel.fetchWebhooks()).size) await client.config.channel.createWebhook(client.config.owner.tag, { avatar: client.config.owner.displayAvatarURL({ format: "png" }) });
+ if (!(await defaultConfig.channel.fetchWebhooks()).size) {
+  await defaultConfig.channel.createWebhook({
+   name: "SSH",
+   avatar: client.user.displayAvatarURL(),
+   reason: "SSH Webhook",
+  });
+ }
  console.log(chalk.cyan(chalk.bold(`[DISCORD] > Logged in as ${client.user.tag}`)));
  client.user.setActivity("all ports!", { type: ActivityType.Watching });
 });
 
 process.stdin.on("data", (data) => exec(data.toString(), { terminal: true }));
 
-client.login(client.config.token).catch(() => {
- throw new Error("Invalid TOKEN in .env");
+client.login(process.env.TOKEN).catch((error) => {
+ throw new Error(error);
 });
 
 process.on("unhandledRejection", async (reason) => {
  return console.log(chalk.red(chalk.bold(`[ERROR] > Unhandled Rejection: ${reason}`)));
 });
+
 process.on("uncaughtException", async (err) => {
  return console.log(chalk.red(chalk.bold(`[ERROR] > Uncaught Exception: ${err}`)));
-});
-process.on("uncaughtExceptionMonitor", async (err) => {
- return console.log(chalk.red(chalk.bold(`[ERROR] > Uncaught Exception Monitor: ${err}`)));
 });
