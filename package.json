@@ -24,7 +24,7 @@
     "@igorkowalczyk/eslint-config": "2.2.0",
     "@igorkowalczyk/prettier-config": "2.2.0",
     "eslint": "8.56.0",
-    "nodemon": "3.0.2",
+    "nodemon": "3.0.3",
     "prettier": "3.2.2"
   },
   "engines": {
