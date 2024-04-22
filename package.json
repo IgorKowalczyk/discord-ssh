@@ -28,8 +28,7 @@
     "prettier": "3.2.5"
   },
   "engines": {
-    "node": ">=18",
-    "pnpm": "8 || 9"
+    "node": ">=18"
   },
   "repository": {
     "type": "git",
