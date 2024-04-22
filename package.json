@@ -28,7 +28,8 @@
     "prettier": "3.2.5"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18",
+    "pnpm": "8 || 9"
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,5 @@
     "discord-ssh",
     "ssh",
     "remote-connection"
-  ],
-  "packageManager": "pnpm@9.0.4"
+  ]
 }
