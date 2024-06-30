@@ -16,7 +16,7 @@
     "chalk": "5.3.0",
     "discord.js": "14.15.3",
     "dotenv": "16.4.5",
-    "globby": "14.0.1",
+    "globby": "14.0.2",
     "strip-ansi": "7.1.0",
     "systeminformation": "5.22.11"
   },
