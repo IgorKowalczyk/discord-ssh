@@ -1,6 +1,7 @@
+import { readdirSync } from "node:fs";
 import { basename } from "node:path";
 import { performance } from "node:perf_hooks";
-import { globby } from "globby";
+import { pathToFileURL } from "node:url";
 import { defaultConfig } from "../config.js";
 import { logger } from "./logger.js";
 
@@ -15,9 +16,18 @@ export default async function loadEvents(client) {
  try {
   const loadTime = performance.now();
 
-  const events = await globby(`${process.cwd()}/events/*/*.js`);
+  const directories = readdirSync(`${process.cwd()}/events/`);
+  const events = [];
+  for (const directory of directories) {
+   const files = readdirSync(`${process.cwd()}/events/${directory}`).filter((file) => file.endsWith(".js"));
+   for (const file of files) {
+    events.push(`${process.cwd()}/events/${directory}/${file}`);
+   }
+  }
+
   for (const file of events) {
-   await import(file).then((e) => {
+   const fileURL = pathToFileURL(file);
+   await import(fileURL).then((e) => {
     const eventName = basename(file, ".js");
     defaultConfig.debugger.displayEventList && logger("event", `Loaded event ${eventName} from ${file.replace(process.cwd(), "")}`);
     client.on(eventName, e[eventName].bind(null, client));

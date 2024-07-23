@@ -16,7 +16,6 @@
     "chalk": "5.3.0",
     "discord.js": "14.15.3",
     "dotenv": "16.4.5",
-    "globby": "14.0.2",
     "strip-ansi": "7.1.0",
     "systeminformation": "5.22.11"
   },
@@ -47,5 +46,6 @@
     "discord-ssh",
     "ssh",
     "remote-connection"
-  ]
+  ],
+  "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
 }
