@@ -21,8 +21,8 @@ importers:
         specifier: 7.1.0
         version: 7.1.0
       systeminformation:
-        specifier: 5.23.1
-        version: 5.23.1
+        specifier: 5.23.2
+        version: 5.23.2
     devDependencies:
       '@igorkowalczyk/eslint-config':
         specifier: 2.2.0
@@ -1004,8 +1004,8 @@ packages:
     resolution: {integrity: sha512-L1dapNV6vu2s/4Sputv8xGsCdAVlb5nRDMFU/E27D44l5U6cw1g0dGd45uLc+OXjNMmF4ntiMdCimzcjFKQI8Q==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
-  systeminformation@5.23.1:
-    resolution: {integrity: sha512-r1DRobQxcm8YZGj+sc/oXhaDjjIOUGVvGnzd10MQey7F3ygu+qXV5ofWQiK7x3bSZCxFFn/BOiMak00gZgaGWQ==}
+  systeminformation@5.23.2:
+    resolution: {integrity: sha512-FoipTSwzZR68ZAjXZ8DRH2DFEErMAOi9JvRMsn6i/hTp6Hd4W4nM1W6a+kUyMrp/pd1SIuUzUZvvkQ21yE6Dig==}
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
@@ -2180,7 +2180,7 @@ snapshots:
       '@pkgr/utils': 2.4.2
       tslib: 2.6.2
 
-  systeminformation@5.23.1: {}
+  systeminformation@5.23.2: {}
 
   text-table@0.2.0: {}
 
