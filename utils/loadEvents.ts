@@ -2,24 +2,19 @@ import { readdirSync } from "node:fs";
 import { basename } from "node:path";
 import { performance } from "node:perf_hooks";
 import { pathToFileURL } from "node:url";
-import { defaultConfig } from "../config.js";
-import { logger } from "./logger.js";
+import { defaultConfig } from "../config";
+import { logger } from "./logger";
+import { Client } from "discord.js";
 
-/**
- * Loads all events from the /events folder
- *
- * @param {object} client - The Discord client
- * @returns {Promise<void>} Promise that resolves when all events are loaded
- * @throws {Error} Error that is thrown if an event could not be loaded
- */
-export default async function loadEvents(client) {
+export default async function loadEvents(client: Client): Promise<void> {
  try {
   const loadTime = performance.now();
 
   const directories = readdirSync(`${process.cwd()}/events/`);
-  const events = [];
+  const events: string[] = [];
+
   for (const directory of directories) {
-   const files = readdirSync(`${process.cwd()}/events/${directory}`).filter((file) => file.endsWith(".js"));
+   const files = readdirSync(`${process.cwd()}/events/${directory}`).filter((file) => file.endsWith(".ts"));
    for (const file of files) {
     events.push(`${process.cwd()}/events/${directory}/${file}`);
    }
@@ -27,8 +22,8 @@ export default async function loadEvents(client) {
 
   for (const file of events) {
    const fileURL = pathToFileURL(file);
-   await import(fileURL).then((e) => {
-    const eventName = basename(file, ".js");
+   await import(fileURL.toString()).then((e) => {
+    const eventName = basename(file, ".ts");
     defaultConfig.debugger.displayEventList && logger("event", `Loaded event ${eventName} from ${file.replace(process.cwd(), "")}`);
     client.on(eventName, e[eventName].bind(null, client));
    });
@@ -36,6 +31,6 @@ export default async function loadEvents(client) {
 
   logger("event", `Loaded ${events.length} events from /events in ${Math.round(performance.now() - loadTime)}ms`);
  } catch (error) {
-  logger("error", `Error loading events: ${error.message}`);
+  logger("error", `Error loading events: ${error}`);
  }
 }
