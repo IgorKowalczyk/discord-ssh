@@ -14,7 +14,7 @@ try {
    parse: ["users", "roles"],
    repliedUser: false,
   },
-  intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMembers | GatewayIntentBits.GuildPresences | GatewayIntentBits.GuildMessages | GatewayIntentBits.MessageContent,
+  intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMembers | GatewayIntentBits.GuildMessages | GatewayIntentBits.MessageContent,
  });
 
  logger("info", "Loading events...");
