@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { Client, GatewayIntentBits } from "discord.js";
-import loadEvents from "./utils/loadEvents.js";
-import { logger } from "./utils/logger.js";
+import loadEvents from "./utils/loadEvents";
+import { logger } from "./utils/logger";
 
 logger("event", "Starting SSH Bot session...");
 logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
@@ -14,25 +14,24 @@ try {
    parse: ["users", "roles"],
    repliedUser: false,
   },
-  intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMembers | GatewayIntentBits.GuildPresences | GatewayIntentBits.GuildMessages | GatewayIntentBits.MessageContent,
+  intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMembers | GatewayIntentBits.GuildMessages | GatewayIntentBits.MessageContent,
  });
-
- client.customCWD = process.env.CUSTOM_CWD || process.cwd();
 
  logger("info", "Loading events...");
  await loadEvents(client);
 
  logger("info", "Logging in...");
+
  await client.login(process.env.TOKEN);
 } catch (error) {
- logger("error", error);
+ logger("error", `Error starting the bot: ${error}`);
  process.exit(1);
 }
 
 process.on("unhandledRejection", async (reason) => {
- return logger("error", reason);
+ return logger("error", `Unhandled Rejection: ${reason}`);
 });
 
 process.on("uncaughtException", async (err) => {
- return logger("error", err);
+ return logger("error", `Uncaught Exception: ${err}`);
 });
