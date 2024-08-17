@@ -44,22 +44,6 @@ I can also use it to run commands on my local machine.
 > [!NOTE]
 > Bot will not respond to messages in other channels or other members than you (bot owner) unless you change it in the `.env` file or in the code
 
-## 🔩 Limitations
-
-- `sudo` / `su` commands are not supported, and probably never will be (for security reasons).
-- Text inputs are not supported (e.g. `nano`), but you can use `echo` to create/edit files.
-- Dynamic output is not supported (e.g. `top`, `htop`).
-- Colored output is not supported and will be stripped. Some commands may not work as expected.
-
-> [!NOTE]
-> Changing directory (`cd`) is supported when it's at the beginning of a command (e.g. `cd /var/www && ls`)
-
-## 🌌 Future plans
-
-- [ ] Add support for ssh connection
-- [ ] Add support for dynamic output
-- [ ] Add support for text inputs
-
 ## 🔐 `.env` config
 
 ```sh
@@ -80,7 +64,23 @@ CUSTOM_CWD="Default path to the bot's working directory (optional - remove this 
 | `CUSTOM_CWD` | Default directory for SSH commands (Default: `/`) | `❌ No`  |
 
 > [!NOTE]
-> You can get your Discord user ID/Cannel ID by enabling `Developer Mode` in Discord settings and right-clicking on your profile or channel
+> You can get your Discord user ID/Cannel ID by enabling `Developer Mode` in Discord settings and right-clicking on your profile or channel.
+
+## 🔩 Limitations
+
+- `sudo` / `su` commands are not supported, and probably never will be (for security reasons).
+- Text inputs are not supported (e.g. `nano`), but you can use `echo` to create/edit files.
+- Dynamic output is not supported (e.g. `top`, `htop`).
+- Colored output is not supported and will be stripped. Some commands may not work as expected.
+
+> [!NOTE]
+> Changing directory (`cd`) is supported when it's at the beginning of a command (e.g. `cd /var/www && ls`)
+
+## 🌌 Future plans
+
+- [ ] Add support for ssh connection
+- [ ] Add support for dynamic output
+- [ ] Add support for text inputs
 
 ## ⁉️ Issues
 
