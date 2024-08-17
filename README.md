@@ -46,12 +46,19 @@ I can also use it to run commands on my local machine.
 
 ## 🔩 Limitations
 
-- `sudo` / `su`commands are not supported, and probably never will be (for security reasons).
+- `sudo` / `su` commands are not supported, and probably never will be (for security reasons).
 - Text inputs are not supported (e.g. `nano`), but you can use `echo` to create/edit files.
-- Colored output is not supported and can be broken!
+- Dynamic output is not supported (e.g. `top`, `htop`).
+- Colored output is not supported and will be stripped. Some commands may not work as expected.
 
 > [!NOTE]
-> Changing directory (`cd`) is supported when it's at the beginning of a command!
+> Changing directory (`cd`) is supported when it's at the beginning of a command (e.g. `cd /var/www && ls`)
+
+## 🌌 Future plans
+
+- [ ] Add support for ssh connection
+- [ ] Add support for dynamic output
+- [ ] Add support for text inputs
 
 ## 🔐 `.env` config
 
