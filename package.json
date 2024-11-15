@@ -22,7 +22,7 @@
     "@igorkowalczyk/eslint-config": "2.2.0",
     "@igorkowalczyk/prettier-config": "2.2.0",
     "@types/node": "22.9.0",
-    "eslint": "9.14.0",
+    "eslint": "9.15.0",
     "prettier": "3.3.3",
     "tsx": "4.19.2",
     "typescript": "5.6.3"
