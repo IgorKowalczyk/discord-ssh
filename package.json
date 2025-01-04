@@ -16,7 +16,7 @@
     "discord.js": "14.17.2",
     "dotenv": "16.4.7",
     "strip-ansi": "7.1.0",
-    "systeminformation": "5.24.8"
+    "systeminformation": "5.24.9"
   },
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "2.2.0",
