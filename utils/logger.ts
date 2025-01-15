@@ -1,8 +1,6 @@
 import chalk from "chalk";
 
-type LogType = "info" | "event" | "error" | "warn" | "ready" | "cron";
-
-const colors: Record<LogType, keyof typeof chalk> = {
+const colors: Record<"info" | "event" | "error" | "warn" | "ready" | "cron", string> = {
  info: "cyan",
  event: "magenta",
  error: "red",
@@ -11,8 +9,12 @@ const colors: Record<LogType, keyof typeof chalk> = {
  cron: "blue",
 };
 
-const longest = Math.max(...Object.keys(colors).map((type) => type.length));
+export function Logger(type: keyof typeof colors, ...args: (string | unknown)[]) {
+ const longest = Object.keys(colors).reduce((long, str) => Math.max(long, str.length), 0);
 
-export function logger(type: LogType, ...args: string[]): void {
- console.log(`${(chalk[colors[type]] as Function)(type.padEnd(longest))} - ${chalk.white(args.join(" "))}`);
+ const color = colors[type] as keyof typeof chalk;
+ const chalkFunction = chalk[color] as (..._text: string[]) => string;
+ console.log(chalkFunction(type + " ".repeat(longest - type.length)) + chalk.white(" - " + args.join(" ")));
 }
+
+export { chalk };
