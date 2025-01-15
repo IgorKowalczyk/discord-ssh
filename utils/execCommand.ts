@@ -1,11 +1,11 @@
 import { exec } from "node:child_process";
+import { promisify } from "util";
 import { Client, EmbedBuilder, TextChannel, codeBlock } from "discord.js";
 import stripAnsi from "strip-ansi";
 import { cpuTemperature as checkCpuTemperature, currentLoad, mem } from "systeminformation";
-import { defaultConfig } from "../config";
-import { chunkString } from "./chunkString";
-import { logger } from "./logger";
-import { promisify } from "util";
+import { defaultConfig } from "@/config";
+import { chunkString } from "@/utils/chunkString";
+import { Logger } from "@/utils/logger";
 
 const execPromise = promisify(exec);
 
@@ -31,7 +31,7 @@ async function executeCommand(command: string) {
 
 export async function execCommand(client: Client, input: string): Promise<void> {
  try {
-  defaultConfig.debugger.showCommand && logger("event", `Executing command: ${input} in ${defaultConfig.cwd}`);
+  if (defaultConfig.debugger.showCommand) Logger("event", `Executing command: ${input} in ${defaultConfig.cwd}`);
 
   const { cpuTemperature, cpuUsage, memoryPercentage } = await getSystemInfo();
   const output = (await executeCommand(input)) || "No output!";
@@ -51,9 +51,9 @@ export async function execCommand(client: Client, input: string): Promise<void> 
     embed.setDescription(`${embed.data.description}\n${codeBlock(`CWD: ${defaultConfig.cwd}\nCPU: ${Math.round(cpuUsage)}% | RAM: ${Math.round(memoryPercentage)}% | Temp: ${Math.round(cpuTemperature)}°C`)}`);
    }
 
-   if (!defaultConfig.channel) return logger("error", "Channel not found! Please check your CHANNEL_ID .env variable.");
+   if (!defaultConfig.channel) return Logger("error", "Channel not found! Please check your CHANNEL_ID .env variable.");
    const channel = client.channels.cache.get(defaultConfig.channel) as TextChannel;
-   if (!channel) return logger("error", "Channel not found! Please check your CHANNEL_ID .env variable.");
+   if (!channel) return Logger("error", "Channel not found! Please check your CHANNEL_ID .env variable.");
 
    const finalMessage = channel.messages.cache.first();
    if (index2 !== 1) channel.send({ embeds: [embed] });

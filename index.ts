@@ -1,12 +1,12 @@
 import "dotenv/config";
 import { Client, GatewayIntentBits } from "discord.js";
-import loadEvents from "./utils/loadEvents";
-import { logger } from "./utils/logger";
+import loadEvents from "@/utils/loadEvents";
+import { Logger } from "@/utils/logger";
 
-logger("event", "Starting SSH Bot session...");
-logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
-logger("info", "Check out the source code at https://github.com/igorkowalczyk/discord-ssh!");
-logger("info", "Don't forget to star the repository, it helps a lot!");
+Logger("event", "Starting SSH Bot session...");
+Logger("info", `Running version v${process.env.npm_package_version} on Node.js ${process.version} on ${process.platform} ${process.arch}`);
+Logger("info", "Check out the source code at https://github.com/igorkowalczyk/discord-ssh!");
+Logger("info", "Don't forget to star the repository, it helps a lot!");
 
 try {
  const client = new Client({
@@ -17,21 +17,21 @@ try {
   intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMembers | GatewayIntentBits.GuildMessages | GatewayIntentBits.MessageContent,
  });
 
- logger("info", "Loading events...");
+ Logger("info", "Loading events...");
  await loadEvents(client);
 
- logger("info", "Logging in...");
+ Logger("info", "Logging in...");
 
  await client.login(process.env.TOKEN);
 } catch (error) {
- logger("error", `Error starting the bot: ${error}`);
- process.exit(1);
+ Logger("error", `Error starting the bot: ${error}`);
+ throw error;
 }
 
-process.on("unhandledRejection", async (reason) => {
- return logger("error", `Unhandled Rejection: ${reason}`);
+process.on("unhandledRejection", (reason) => {
+ return Logger("error", `Unhandled Rejection: ${reason}`);
 });
 
-process.on("uncaughtException", async (err) => {
- return logger("error", `Uncaught Exception: ${err}`);
+process.on("uncaughtException", (err) => {
+ return Logger("error", `Uncaught Exception: ${err}`);
 });

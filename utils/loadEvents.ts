@@ -2,9 +2,9 @@ import { readdirSync } from "node:fs";
 import { basename } from "node:path";
 import { performance } from "node:perf_hooks";
 import { pathToFileURL } from "node:url";
-import { defaultConfig } from "../config";
-import { logger } from "./logger";
 import { Client } from "discord.js";
+import { defaultConfig } from "@/config";
+import { Logger } from "@/utils/logger";
 
 export default async function loadEvents(client: Client): Promise<void> {
  try {
@@ -24,13 +24,13 @@ export default async function loadEvents(client: Client): Promise<void> {
    const fileURL = pathToFileURL(file);
    await import(fileURL.toString()).then((e) => {
     const eventName = basename(file, ".ts");
-    defaultConfig.debugger.displayEventList && logger("event", `Loaded event ${eventName} from ${file.replace(process.cwd(), "")}`);
+    if (defaultConfig.debugger.displayEventList) Logger("event", `Loaded event ${eventName} from ${file.replace(process.cwd(), "")}`);
     client.on(eventName, e[eventName].bind(null, client));
    });
   }
 
-  logger("event", `Loaded ${events.length} events from /events in ${Math.round(performance.now() - loadTime)}ms`);
+  Logger("event", `Loaded ${events.length} events from /events in ${Math.round(performance.now() - loadTime)}ms`);
  } catch (error) {
-  logger("error", `Error loading events: ${error}`);
+  Logger("error", `Error loading events: ${error}`);
  }
 }

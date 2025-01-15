@@ -1,9 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { Client, EmbedBuilder, Message, TextChannel } from "discord.js";
-import { defaultConfig } from "../../config.js";
-import { execCommand } from "../../utils/execCommand.ts";
-import { logger } from "../../utils/logger.js";
+import { defaultConfig } from "@/config";
+import { execCommand } from "@/utils/execCommand";
+import { Logger } from "@/utils/logger";
 
 export async function messageCreate(client: Client, message: Message): Promise<void | Message<boolean>> {
  try {
@@ -28,7 +28,7 @@ export async function messageCreate(client: Client, message: Message): Promise<v
 
    try {
     process.chdir(resolvedPath);
-    defaultConfig.debugger.changeDir && logger("event", `Changed directory from ${defaultConfig.cwd} to ${resolvedPath}`);
+    if (defaultConfig.debugger.changeDir) Logger("event", `Changed directory from ${defaultConfig.cwd} to ${resolvedPath}`);
 
     const changedDirectory = new EmbedBuilder() // prettier
      .setDescription(`${defaultConfig.emojis.change} **Changed directory from \`${defaultConfig.cwd}\` to \`${resolvedPath}\`**`)
@@ -37,7 +37,7 @@ export async function messageCreate(client: Client, message: Message): Promise<v
     defaultConfig.cwd = resolvedPath;
     return message.reply({ embeds: [changedDirectory] });
    } catch (error) {
-    defaultConfig.debugger.changeDir && logger("error", `Error changing directory: ${error}`);
+    if (defaultConfig.debugger.changeDir) Logger("error", `Error changing directory: ${error}`);
     const errorEmbed = new EmbedBuilder() // prettier
      .setDescription(`${defaultConfig.emojis.error} **Error changing directory**`)
      .setColor(defaultConfig.embedColor);
@@ -54,6 +54,6 @@ export async function messageCreate(client: Client, message: Message): Promise<v
 
   await execCommand(client, message.content);
  } catch (error) {
-  logger("error", `Error executing command: ${error}`);
+  Logger("error", `Error executing command: ${error}`);
  }
 }
