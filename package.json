@@ -48,5 +48,5 @@
     "ssh",
     "remote-connection"
   ],
-  "packageManager": "pnpm@10.4.1"
+  "packageManager": "pnpm@10.5.1"
 }
