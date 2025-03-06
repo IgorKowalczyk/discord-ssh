@@ -1,4 +1,5 @@
 import eslintConfig from "@igorkowalczyk/eslint-config";
+import type { Linter } from "eslint";
 
 export default [
  // prettier
@@ -6,4 +7,4 @@ export default [
  ...eslintConfig.node,
  ...eslintConfig.typescript,
  ...eslintConfig.prettier,
-];
+] satisfies Linter.Config[];

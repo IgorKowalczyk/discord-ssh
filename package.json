@@ -19,9 +19,9 @@
     "systeminformation": "5.25.11"
   },
   "devDependencies": {
-    "@igorkowalczyk/eslint-config": "3.0.2",
-    "@igorkowalczyk/prettier-config": "3.0.2",
-    "@types/node": "22.13.8",
+    "@igorkowalczyk/eslint-config": "3.0.7",
+    "@igorkowalczyk/prettier-config": "3.0.7",
+    "@types/node": "22.13.9",
     "eslint": "9.21.0",
     "prettier": "3.5.3",
     "tsx": "4.19.3",
@@ -48,5 +48,10 @@
     "ssh",
     "remote-connection"
   ],
-  "packageManager": "pnpm@10.6.0"
+  "packageManager": "pnpm@10.6.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
 }
