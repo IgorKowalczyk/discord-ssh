@@ -1,10 +1,10 @@
 import eslintConfig from "@igorkowalczyk/eslint-config";
-import type { Linter } from "eslint";
+import { defineConfig } from "eslint/config";
 
-export default [
+export default defineConfig([
  // prettier
- ...eslintConfig.base,
- ...eslintConfig.node,
- ...eslintConfig.typescript,
- ...eslintConfig.prettier,
-] satisfies Linter.Config[];
+ eslintConfig.base,
+ eslintConfig.node,
+ eslintConfig.typescript,
+ eslintConfig.prettier,
+]);
