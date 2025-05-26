@@ -9,7 +9,8 @@ export async function messageCreate(client: Client, message: Message): Promise<v
  try {
   if (message.author.bot) return;
   if (!(message.channel instanceof TextChannel)) return;
-  if (message.channel.id !== defaultConfig.channel && !defaultConfig.owners.includes(message.author.id)) return;
+  if (message.channel.id !== defaultConfig.channel) return;
+  if (!defaultConfig.owners.includes(message.author.id)) return;
   if (!message.content) return;
 
   const [command, ...args] = message.content.split(" ");
@@ -50,9 +51,9 @@ export async function messageCreate(client: Client, message: Message): Promise<v
    .setDescription(`${defaultConfig.emojis.loading} **Waiting for server response...**`)
    .setColor(defaultConfig.embedColor);
 
-  await message.reply({ embeds: [wait] });
+  const waitMessage = await message.reply({ embeds: [wait] });
 
-  await execCommand(client, message.content);
+  await execCommand(client, message.content, waitMessage);
  } catch (error) {
   Logger("error", `Error executing command: ${error}`);
  }
