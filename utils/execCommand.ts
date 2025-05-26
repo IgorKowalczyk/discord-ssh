@@ -1,6 +1,6 @@
 import { exec } from "node:child_process";
 import { promisify } from "util";
-import { Client, EmbedBuilder, TextChannel, codeBlock } from "discord.js";
+import { Client, Message, EmbedBuilder, TextChannel, codeBlock } from "discord.js";
 import stripAnsi from "strip-ansi";
 import { cpuTemperature as checkCpuTemperature, currentLoad, mem } from "systeminformation";
 import { defaultConfig } from "@/config";
@@ -29,9 +29,16 @@ async function executeCommand(command: string) {
  }
 }
 
-export async function execCommand(client: Client, input: string): Promise<void> {
+export async function execCommand(client: Client, input: string, waitMessage: Message): Promise<void> {
  try {
   if (defaultConfig.debugger.showCommand) Logger("event", `Executing command: ${input} in ${defaultConfig.cwd}`);
+  if (waitMessage.deletable) {
+   try {
+    waitMessage.delete();
+   } catch (error) {
+    Logger("error", `Error deleting wait message: ${error}`);
+   }
+  }
 
   const { cpuTemperature, cpuUsage, memoryPercentage } = await getSystemInfo();
   const output = (await executeCommand(input)) || "No output!";
