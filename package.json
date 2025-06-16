@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "chalk": "5.4.1",
-    "discord.js": "14.19.3",
+    "discord.js": "14.20.0",
     "dotenv": "16.5.0",
     "strip-ansi": "7.1.0",
     "systeminformation": "5.27.1"
