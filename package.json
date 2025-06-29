@@ -14,15 +14,15 @@
   "dependencies": {
     "chalk": "5.4.1",
     "discord.js": "14.21.0",
-    "dotenv": "16.5.0",
+    "dotenv": "17.0.0",
     "strip-ansi": "7.1.0",
-    "systeminformation": "5.27.6"
+    "systeminformation": "5.27.7"
   },
   "devDependencies": {
-    "@igorkowalczyk/eslint-config": "3.0.8",
-    "@igorkowalczyk/prettier-config": "3.0.8",
-    "@types/node": "22.15.33",
-    "eslint": "9.29.0",
+    "@igorkowalczyk/eslint-config": "3.1.0",
+    "@igorkowalczyk/prettier-config": "3.1.0",
+    "@types/node": "24.0.7",
+    "eslint": "9.30.0",
     "jiti": "2.4.2",
     "prettier": "3.6.2",
     "tsx": "4.20.3",

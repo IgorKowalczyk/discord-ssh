@@ -55,7 +55,9 @@ export async function execCommand(client: Client, input: string, waitMessage: Me
     .setDescription(codeBlock(stripAnsi(item) || "No output!"));
 
    if (index2 == outputDiscord.length) {
-    embed.setDescription(`${embed.data.description}\n${codeBlock(`CWD: ${defaultConfig.cwd}\nCPU: ${Math.round(cpuUsage)}% | RAM: ${Math.round(memoryPercentage)}% | Temp: ${Math.round(cpuTemperature)}°C`)}`);
+    embed.setDescription(
+     `${embed.data.description}\n${codeBlock(`CWD: ${defaultConfig.cwd}\nCPU: ${Math.round(cpuUsage)}% | RAM: ${Math.round(memoryPercentage)}% | Temp: ${Math.round(cpuTemperature)}°C`)}`
+    );
    }
 
    if (!defaultConfig.channel) return Logger("error", "Channel not found! Please check your CHANNEL_ID .env variable.");
