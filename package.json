@@ -25,7 +25,7 @@
     "eslint": "9.33.0",
     "jiti": "2.5.1",
     "prettier": "3.6.2",
-    "tsx": "4.20.3",
+    "tsx": "4.20.4",
     "typescript": "5.9.2"
   },
   "engines": {
