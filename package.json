@@ -21,7 +21,7 @@
   "devDependencies": {
     "@igorkowalczyk/eslint-config": "3.1.0",
     "@igorkowalczyk/prettier-config": "3.1.0",
-    "@types/node": "24.3.0",
+    "@types/node": "24.10.4",
     "eslint": "9.35.0",
     "jiti": "2.5.1",
     "prettier": "3.6.2",
