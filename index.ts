@@ -9,29 +9,29 @@ Logger("info", "Check out the source code at https://github.com/igorkowalczyk/di
 Logger("info", "Don't forget to star the repository, it helps a lot!");
 
 try {
- const client = new Client({
-  allowedMentions: {
-   parse: ["users", "roles"],
-   repliedUser: false,
-  },
-  intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMembers | GatewayIntentBits.GuildMessages | GatewayIntentBits.MessageContent,
- });
+  const client = new Client({
+    allowedMentions: {
+      parse: ["users", "roles"],
+      repliedUser: false,
+    },
+    intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMembers | GatewayIntentBits.GuildMessages | GatewayIntentBits.MessageContent,
+  });
 
- Logger("info", "Loading events...");
- await loadEvents(client);
+  Logger("info", "Loading events...");
+  await loadEvents(client);
 
- Logger("info", "Logging in...");
+  Logger("info", "Logging in...");
 
- await client.login(process.env.TOKEN);
+  await client.login(process.env.TOKEN);
 } catch (error) {
- Logger("error", `Error starting the bot: ${error}`);
- throw error;
+  Logger("error", `Error starting the bot: ${error}`);
+  throw error;
 }
 
 process.on("unhandledRejection", (reason) => {
- return Logger("error", `Unhandled Rejection: ${reason}`);
+  return Logger("error", `Unhandled Rejection: ${reason}`);
 });
 
 process.on("uncaughtException", (err) => {
- return Logger("error", `Uncaught Exception: ${err}`);
+  return Logger("error", `Uncaught Exception: ${err}`);
 });
