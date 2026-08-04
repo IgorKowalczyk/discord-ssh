@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "chalk": "^5.6.2",
+    "chalk": "^6.0.0",
     "discord.js": "^14.25.1",
     "dotenv": "^17.2.3",
     "strip-ansi": "^7.1.2",
